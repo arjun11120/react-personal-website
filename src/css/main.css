@@ -1,0 +1,14 @@
+.text-header{
+    font-weight: 700 ;
+    font-size: 16px ;
+    line-height: 20.99px ;
+  }
+.nav-link {
+  color: #ffff;
+  }
+.hight-lighted{
+  color: #c778dd;
+  }
+.navbar-toggler {
+  color: white !important;
+}
