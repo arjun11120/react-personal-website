@@ -9,6 +9,10 @@ import bodyImage from '../assets/images/Banner.png';
 const BodyImage = styled.img`
   max-width: 100%;
   height: auto;
+  @media (max-width: 767px) {
+    max-width: 100%;
+    margin: 20px 0px;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -27,14 +31,23 @@ const ContentContainer = styled.div`
 const NameWish = styled.span`
   font-size: 48px;
   font-family: 'Sora-Light', sans-serif;
+  @media (max-width: 767px) {
+    font-size: 22px;
+  }
 `;
 const DiscriptionPtag = styled.p`
   font-size: 12px;
   font-family: 'Sora-Light', sans-serif;
+  @media (max-width: 767px) {
+    font-size: 8px;
+  }
 `;
 const NameSpan = styled.span`
   font-size: 48px;
   font-family: 'Sora-Bold', sans-serif;
+  @media (max-width: 767px) {
+    font-size: 22px;
+  }
 `;
 const PositionSpan = styled.span`
   color: white;
@@ -44,12 +57,16 @@ const PositionSpan = styled.span`
               1px  1px 0 #000; 
   font-family: 'Sora-Bold', sans-serif;
   font-size: 48px;
+  @media (max-width: 767px) {
+    font-size: 22px;
+  }
   `;
 const StyledRow = styled(Row)`
   margin: 5px;
 
   @media (max-width: 767px) {
     flex-direction: column;
+    margin: 20px 0px;
   }
 `;
 const StyledCol = styled(Col)`
@@ -60,7 +77,7 @@ const StyledCol = styled(Col)`
 
 export const BodyMain = () => {
   return (
-    <StyledRow className="mx-3">
+    <StyledRow>
       <StyledCol xs={{ order: "last", span: 12 }} md={{ order: "first", span: 6 }}>
         <ContentContainer >
           <h1>

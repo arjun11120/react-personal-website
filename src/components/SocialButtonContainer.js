@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'; // Change import to free-brands-svg-icons
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'; // Change import to free-brands-svg-icons
+import { faInstagram, faFacebook, faLinkedinIn, faWhatsapp } from '@fortawesome/free-brands-svg-icons'; // Change import to free-brands-svg-icons
 
 const MainContainer = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ const NavLinks = styled.div`
   color: black;
   background-color: white;
   border-radius: 0.5rem;
-  border: 1px solid black;
+  border: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +44,7 @@ const NavLinks = styled.div`
     &:hover {
       background-color: #fff;
       color: #000;
-      border: 1px solid black;
+      border: 3px solid black;
       transform: scaleX(1.1) scaleY(1.1);
     }
   }
@@ -73,6 +72,12 @@ export const SocialButtonContainer = () => {
             <FontAwesomeIcon icon={faFacebook} />
           </NavLinks>
           <NavLinkText>Facebook</NavLinkText>
+        </NavItem>
+        <NavItem href="/Whatsapp">
+          <NavLinks className="transition-all">
+            <FontAwesomeIcon icon={faWhatsapp} />
+          </NavLinks>
+          <NavLinkText>Whatsapp</NavLinkText>
         </NavItem>
       </MainContainer>
     </>

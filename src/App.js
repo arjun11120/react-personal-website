@@ -13,6 +13,7 @@ import soraBold from './fonts/static/Sora-Bold.ttf';
 import soraSemiBold from './fonts/static/Sora-SemiBold.ttf'
 import SoraThin from './fonts/static/Sora-Thin.ttf'
 import soraLight from './fonts/static/Sora-Light.ttf';
+import soraRegular from './fonts/static/Sora-Regular.ttf'
 
 import {BodyMain} from './components/BodyMain';
 import { Skills } from "./components/Skills";
@@ -21,6 +22,12 @@ import './css/App.css'
 
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Sora-Regular'; // Define the font family name
+    src: url(${soraRegular}) format('truetype'); // Specify the font source
+    font-weight: bold; // Optional: specify font-weight
+    font-style: normal; // Optional: specify font-style
+  }
   @font-face {
     font-family: 'Sora-Bold'; // Define the font family name
     src: url(${soraBold}) format('truetype'); // Specify the font source
@@ -73,7 +80,7 @@ const App = () => {
 
   const HeaderMain = () => {
     return(
-      <Navbar expand="lg" className="bg-body-tertiary mx-4">
+      <Navbar expand="lg" className="bg-body-tertiary">
         <Navbar.Brand href="#" className="d-flex">
           <BrandContainer>
             <LogoImage src={logoImage} alt="Example" />
@@ -107,12 +114,14 @@ const App = () => {
   )}
 
   return (
-    <Container fluid className="px-md-5" style={{ maxWidth: '2000px' }}>
-      <GlobalStyle /> 
-      <HeaderMain />
-      <BodyMain/>
-      <Skills />
-      <Experience/>
+    <Container fluid>
+      <Container fluid style={{ maxWidth: '2000px' }}>
+        <GlobalStyle /> 
+        <HeaderMain />
+        <BodyMain/>
+        <Skills />
+        <Experience/>
+      </Container>
     </Container>
   );
 }
