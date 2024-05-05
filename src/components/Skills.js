@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCss3, faGit, faHtml5, faJs, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
+import Skeleton from '@mui/material/Skeleton';
 
 const RowWrapper = styled(Row)`
   margin: 20px 0px;
@@ -24,7 +25,13 @@ const RowWrapperHeader = styled.div`
 const StyledCard = styled(Card)`
   padding: 50px 30px;
   margin-top : 20px;
+  height: 200px;
+  width: 200px;
   border: 3px solid black;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  &:hover {
+    transform: scaleX(1.1) scaleY(1.1);
+  }
   @media (max-width: 767px) {
     margin-top: 20px;
     font-size: 10px;
@@ -36,7 +43,7 @@ const StyledCard = styled(Card)`
 
 const CardTitle = styled(Card.Title)`
   text-align: center;
-  font-family: 'Sora-light', sans-serif;
+  font-family: 'Sora-SemiBold'; 
   font-size: 17px;
   margin-top: 20px;
   @media (max-width: 767px) {
@@ -44,50 +51,56 @@ const CardTitle = styled(Card.Title)`
   }
 `;
 
-export const Skills = () => {
+export const Skills = ({ref, loading}) => {
   return (
-    <RowWrapper>
-      <Row>
-        <RowWrapperHeader>My Skills</RowWrapperHeader>
-      </Row>
-      <Row className="mt-4 d-md-flex justify-content-md-center">
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faReact} size="2x" />
-              <CardTitle>React JS</CardTitle>
-          </StyledCard>
-        </Col>
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faJs} size="2x" />
-              <CardTitle>JavaScript</CardTitle>
-          </StyledCard>
-        </Col>
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faGit} size="2x" />
-              <CardTitle>Git</CardTitle>
-          </StyledCard>
-        </Col>
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faHtml5} size="2x" />
-              <CardTitle>HTML5</CardTitle>
-          </StyledCard>
-        </Col>
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faCss3} size="2x" />
-              <CardTitle>CSS3</CardTitle>
-          </StyledCard>
-        </Col>
-        <Col xs={6} sm={4} lg={2}> 
-          <StyledCard>
-            <FontAwesomeIcon icon={faNodeJs} size="2x" />
-              <CardTitle>Node JS</CardTitle>
-          </StyledCard>
-        </Col>
-      </Row>
-    </RowWrapper>
+    <>
+      {!loading ? (
+      <RowWrapper ref={ref}>
+        <Row>
+          <RowWrapperHeader>My Skills</RowWrapperHeader>
+        </Row>
+        <Row className="mt-4 d-md-flex justify-content-md-center">
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faReact} size="2x" />
+                <CardTitle>React JS</CardTitle>
+            </StyledCard>
+          </Col>
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faJs} size="2x" />
+                <CardTitle>JavaScript</CardTitle>
+            </StyledCard>
+          </Col>
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faGit} size="2x" />
+                <CardTitle>Git</CardTitle>
+            </StyledCard>
+          </Col>
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faHtml5} size="2x" />
+                <CardTitle>HTML5</CardTitle>
+            </StyledCard>
+          </Col>
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faCss3} size="2x" />
+                <CardTitle>CSS3</CardTitle>
+            </StyledCard>
+          </Col>
+          <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
+            <StyledCard>
+              <FontAwesomeIcon icon={faNodeJs} size="2x" />
+                <CardTitle>Node JS</CardTitle>
+            </StyledCard>
+          </Col>
+        </Row>
+      </RowWrapper>
+      ) : (
+        <Skeleton className="mt-2" variant="rectangular" height={500} />
+      )}
+    </>
   );
 };

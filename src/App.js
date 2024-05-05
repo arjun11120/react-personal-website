@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styled, {createGlobalStyle} from 'styled-components';
+import Skeleton from '@mui/material/Skeleton';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,9 +17,12 @@ import SoraThin from './fonts/static/Sora-Thin.ttf'
 import soraLight from './fonts/static/Sora-Light.ttf';
 import soraRegular from './fonts/static/Sora-Regular.ttf'
 
-import {BodyMain} from './components/BodyMain';
+import { BodyMain } from './components/BodyMain';
 import { Skills } from "./components/Skills";
 import { Experience } from "./components/Experience";
+import { AboutBody } from "./components/AboutBody";
+import { Projects } from "./components/Projects";
+
 import './css/App.css'
 
 
@@ -75,13 +80,44 @@ const StyledButton = styled(Button)`
   font-family: 'Sora-SemiBold', sans-serif;
   padding: 2px;
 `;
+const StyledSkeleton = styled(Skeleton)`
+  font-family: 'Sora-SemiBold', sans-serif;
+  padding: 2px;
+`;
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+  const homeRef = useRef(null);
+  const experienceRef = useRef(null);
+  const skillsRef = useRef(null);
+  const aboutRef = useRef(null);
+
+  const scrollToSection = (elementRef) => {
+    if (!elementRef || !elementRef.current) {
+      console.error("Element reference is null or current element is null.");
+      return;
+    }
+  
+    // Add a short delay before scrolling
+    setTimeout(() => {
+      window.scrollTo({
+        top: elementRef.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }, 100); // Adjust the delay as needed
+  };
+  
+
+  useEffect(() => {
+    // setTimeout(() => {
+      setLoading(false);
+    // }, 3000);
+  }, []);
 
   const HeaderMain = () => {
-    return(
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand href="#" className="d-flex">
+    return !loading ? (
+      <Navbar expand="lg" className="bg-body-tertiary px-md-4">
+        <Navbar.Brand onClick={() => scrollToSection(homeRef)} className="d-flex">
           <BrandContainer>
             <LogoImage src={logoImage} alt="Example" />
             <StyledH4>Arjun</StyledH4>
@@ -89,41 +125,40 @@ const App = () => {
         </Navbar.Brand>
         <Navbar.Toggle className="border-0" aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-          </Nav>
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll />
           <div className="flex-grow-1 d-lg-flex d-sm-block justify-content-center align-items-center">
-            <StyledH4>About me</StyledH4>
-            <StyledH4>Skills</StyledH4>
-            <StyledH4>Project</StyledH4>
+            <StyledH4 onClick={() => scrollToSection(experienceRef)}>Experience</StyledH4>
+            <StyledH4 onClick={() => scrollToSection(skillsRef)}>Skills</StyledH4>
+            <StyledH4 onClick={() => scrollToSection(aboutRef)}>About</StyledH4>
             <StyledH4>Contact me</StyledH4>
           </div>
           <Form className="d-flex">
-            <Button className="bg-black border-0" fira-code-20>
-              <StyledButton className="bg-black border-0" fira-code-20>
+            <Button className="bg-black border-0">
+              <StyledButton className="bg-black border-0">
                 <StyledFontAwesomeIcon icon={faDownload} />
-                  Resume
+                Resume
               </StyledButton>
             </Button>
           </Form>
         </Navbar.Collapse>
-    </Navbar>
-  )}
+      </Navbar>
+    ) : (
+      <StyledSkeleton className="mt-2" variant="rectangular" height={50}></StyledSkeleton>
+    );
+  };
 
   return (
-    <Container fluid>
+    <Container className="p-0 m-0" fluid>
       <Container fluid style={{ maxWidth: '2000px' }}>
-        <GlobalStyle /> 
+        <GlobalStyle />
         <HeaderMain />
-        <BodyMain/>
-        <Skills />
-        <Experience/>
+        <BodyMain ref={homeRef} loading={loading} />
+        <Skills ref={skillsRef} loading={loading} />
+        <Experience ref={experienceRef} loading={loading} />
+        <AboutBody ref={aboutRef} loading={loading} />
+        <Projects ref={aboutRef} loading={loading} />
       </Container>
     </Container>
   );
-}
-
+};
 export default App;

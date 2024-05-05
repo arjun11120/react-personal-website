@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Skeleton from '@mui/material/Skeleton';
 
 import bodyImage from '../assets/images/Techversant-logo.png';
 
@@ -21,8 +22,10 @@ const RowWrapperHeader = styled.div`
   }
 `;
 const CardDiv = styled.div`
-  border: 2px solid #71717A;
+  border: .5px solid #71717A;
   flex-shrink: 0;
+  border-radius: 8px;
+  text-align: -webkit-center;
 `;
 const CustomH6 = styled.h6`
   font-family: 'Sora-SemiBold';
@@ -48,9 +51,11 @@ const BodyImage = styled.img`
   }
 `;
 
-export const Experience = () => {
+export const Experience = ({loading}) => {
   return (
-    <RowWrapper>
+    <>
+    {!loading ? (
+    <RowWrapper className="px-md-4">
       <RowWrapperHeader>My Experience</RowWrapperHeader>
       <Col>
         <CardDiv className = "m-4 p-4">
@@ -68,5 +73,9 @@ export const Experience = () => {
         </CardDiv>
       </Col>
     </RowWrapper>
+    ) : (
+      <Skeleton className="mt-2" variant="rectangular" height={500} />
+    )}
+  </>
   );
 };
