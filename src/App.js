@@ -16,12 +16,15 @@ import soraSemiBold from './fonts/static/Sora-SemiBold.ttf'
 import SoraThin from './fonts/static/Sora-Thin.ttf'
 import soraLight from './fonts/static/Sora-Light.ttf';
 import soraRegular from './fonts/static/Sora-Regular.ttf'
+import soraExtraBold from './fonts/static/Sora-ExtraBold.ttf'
 
 import { BodyMain } from './components/BodyMain';
 import { Skills } from "./components/Skills";
 import { Experience } from "./components/Experience";
 import { AboutBody } from "./components/AboutBody";
 import { Projects } from "./components/Projects";
+import { Contact }  from "./components/Contact";
+import { Footer }  from "./components/Footer";
 
 import './css/App.css'
 
@@ -46,6 +49,12 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
   @font-face {
+    font-family: 'Sora-SemiBold'; // Define the font family name for Sora-SemiBold
+    src: url(${soraSemiBold}) format('truetype'); // Specify the font source for Sora-SemiBold
+    font-weight: 600; // Specify the font weight for Sora-SemiBold
+    font-style: normal;
+  }
+  @font-face {
     font-family: 'Sora-Thin';
     src: url(${SoraThin}) format('truetype');
     font-weight: 200; /* Adjust weight as needed */
@@ -54,6 +63,12 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Sora-Light';
     src: url(${soraLight}) format('truetype'); // Define the font source for Sora-Light
+    font-weight: 300; // Adjust the font weight if necessary
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Sora-ExtraBold';
+    src: url(${soraExtraBold}) format('truetype'); // Define the font source for Sora-Light
     font-weight: 300; // Adjust the font weight if necessary
     font-style: normal;
   }
@@ -85,29 +100,15 @@ const StyledSkeleton = styled(Skeleton)`
   padding: 2px;
 `;
 
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const homeRef = useRef(null);
-  const experienceRef = useRef(null);
-  const skillsRef = useRef(null);
-  const aboutRef = useRef(null);
-
-  const scrollToSection = (elementRef) => {
-    if (!elementRef || !elementRef.current) {
-      console.error("Element reference is null or current element is null.");
-      return;
-    }
-  
-    // Add a short delay before scrolling
-    setTimeout(() => {
-      window.scrollTo({
-        top: elementRef.current.offsetTop,
-        behavior: 'smooth',
-      });
-    }, 100); // Adjust the delay as needed
-  };
-  
-
   useEffect(() => {
     // setTimeout(() => {
       setLoading(false);
@@ -115,9 +116,10 @@ const App = () => {
   }, []);
 
   const HeaderMain = () => {
+    const [activeSection, setActiveSection] = useState("section1");
     return !loading ? (
       <Navbar expand="lg" className="bg-body-tertiary px-md-4">
-        <Navbar.Brand onClick={() => scrollToSection(homeRef)} className="d-flex">
+        <Navbar.Brand href="/" className="d-flex">
           <BrandContainer>
             <LogoImage src={logoImage} alt="Example" />
             <StyledH4>Arjun</StyledH4>
@@ -127,10 +129,42 @@ const App = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll />
           <div className="flex-grow-1 d-lg-flex d-sm-block justify-content-center align-items-center">
-            <StyledH4 onClick={() => scrollToSection(experienceRef)}>Experience</StyledH4>
-            <StyledH4 onClick={() => scrollToSection(skillsRef)}>Skills</StyledH4>
-            <StyledH4 onClick={() => scrollToSection(aboutRef)}>About</StyledH4>
-            <StyledH4>Contact me</StyledH4>
+          <StyledH4
+            onClick={() => {
+              setActiveSection("section2");
+              scrollToSection("section2");
+            }}
+            style={{ color: activeSection === "section2" ? "gray" : "black" }}
+          >
+            Skills
+          </StyledH4>
+          <StyledH4
+            onClick={() => {
+              setActiveSection("section1");
+              scrollToSection("section1");
+            }}
+            style={{ color: activeSection === "section1" ? "gray" : "black" }}
+          >
+            Experience
+          </StyledH4>
+          <StyledH4
+            onClick={() => {
+              setActiveSection("section3");
+              scrollToSection("section3");
+            }}
+            style={{ color: activeSection === "section3" ? "gray" : "black" }}
+          >
+            About
+          </StyledH4>
+          <StyledH4
+            onClick={() => {
+              setActiveSection("section4");
+              scrollToSection("section4");
+            }}
+            style={{ color: activeSection === "section4" ? "gray" : "black" }}
+          >
+            Contact
+          </StyledH4>
           </div>
           <Form className="d-flex">
             <Button className="bg-black border-0">
@@ -145,18 +179,20 @@ const App = () => {
     ) : (
       <StyledSkeleton className="mt-2" variant="rectangular" height={50}></StyledSkeleton>
     );
-  };
+  };  
 
   return (
-    <Container className="p-0 m-0" fluid>
-      <Container fluid style={{ maxWidth: '2000px' }}>
+    <Container className="m-0" fluid>
+      <Container fluid style={{ maxWidth: '2000px' }} className="p-0">
+        <HeaderMain loading={loading}  />
         <GlobalStyle />
-        <HeaderMain />
-        <BodyMain ref={homeRef} loading={loading} />
-        <Skills ref={skillsRef} loading={loading} />
-        <Experience ref={experienceRef} loading={loading} />
-        <AboutBody ref={aboutRef} loading={loading} />
-        <Projects ref={aboutRef} loading={loading} />
+        <BodyMain loading={loading} />
+        <Skills loading={loading} />
+        <Experience loading={loading} />
+        <AboutBody loading={loading} />
+        <Projects loading={loading} />
+        <Contact />
+        <Footer/>
       </Container>
     </Container>
   );

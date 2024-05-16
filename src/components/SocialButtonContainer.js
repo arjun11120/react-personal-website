@@ -54,7 +54,7 @@ const NavLinks = styled.div`
 export const SocialButtonContainer = () => {
   return (
     <>
-      <MainContainer>
+      <MainContainer data-aos="fade-up">
         <NavItem href="/LinkedIn">
           <NavLinks className="transition-all">
             <FontAwesomeIcon icon={faLinkedinIn} />

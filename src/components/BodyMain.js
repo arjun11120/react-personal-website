@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styled from "styled-components";
 import Skeleton from '@mui/material/Skeleton';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import { SocialButtonContainer } from './SocialButtonContainer'
 import bodyImage from '../assets/images/Banner.png';
@@ -10,6 +12,7 @@ import bodyImage from '../assets/images/Banner.png';
 const BodyImage = styled.img`
   max-width: 100%;
   height: auto;
+  margin-top: 50px;
   @media (max-width: 767px) {
     max-width: 100%;
     margin: 20px 0px;
@@ -75,30 +78,35 @@ const DiscriptionPtag = styled.p`
   }
 `;
 
-export const BodyMain = ({ ref, loading }) => {
-  // const homeRef = useRef(null);
+export const BodyMain = ({ loading }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <>
       {!loading ? (
-        <StyledRow className="px-md-4" ref={ref}>
+        <StyledRow className="px-md-4 pt-4 mt-4">
           <StyledCol xs={{ order: "last", span: 12 }} md={{ order: "first", span: 6 }}>
             <ContentContainer>
-              <h1>
+              <h1 data-aos="fade-up">
                 <NameWish>Hello I’am </NameWish>
                 <NameSpan>Arjun</NameSpan>
               </h1>
-              <h3>
+              <h3 data-aos="fade-up">
                 <NameSpan>React </NameSpan>
                 <PositionSpan>Developer</PositionSpan>
               </h3>
-              <p><NameWish>Based In </NameWish><NameSpan>India.</NameSpan></p>
-              <DiscriptionPtag>
+              <p data-aos="fade-up"><NameWish>Based In </NameWish><NameSpan>India.</NameSpan></p>
+              <DiscriptionPtag data-aos="fade-up">
                 I'm Arjun. Results-driven Associate Software Engineer with 2+ years of hands-on experience in React development. Proven collaborator with cross-functional teams, adept at delivering high-quality software solutions in fast-paced environments. Passionate about innovation, with a focus on enhancing user experiences. Eager to leverage technical expertise for challenging projects at Techversant Infotech.
               </DiscriptionPtag>
             </ContentContainer>
             <SocialButtonContainer />
           </StyledCol>
-          <StyledCol xs={{ order: "first", span: 12 }} md={{ order: "last", span: 6 }} className="d-flex align-items-center justify-content-center">
+          <StyledCol xs={{ order: "first", span: 12 }} md={{ order: "last", span: 6 }} className="d-flex align-items-center justify-content-center mt-4" data-aos="fade-up">
             <BodyImage src={bodyImage} alt="profile image" className="img-fluid" />
           </StyledCol>
         </StyledRow>

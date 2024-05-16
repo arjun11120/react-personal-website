@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Skeleton from '@mui/material/Skeleton';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import bodyImage from '../assets/images/Techversant-logo.png';
 
@@ -40,6 +42,10 @@ const CustomP = styled.p`
   font-family: 'Sora-Light', sans-serif;
   font-size: 11px;
   color: #D4D4D8;
+  text-align: left;
+  @media (max-width: 767px) {
+    text-align: center;
+  }
 `;
 const BodyImage = styled.img`
   max-width: 100%;
@@ -52,10 +58,16 @@ const BodyImage = styled.img`
 `;
 
 export const Experience = ({loading}) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <>
     {!loading ? (
-    <RowWrapper className="px-md-4">
+    <RowWrapper id="section1" className="px-md-4" data-aos="fade-up">
       <RowWrapperHeader>My Experience</RowWrapperHeader>
       <Col>
         <CardDiv className = "m-4 p-4">
@@ -67,7 +79,7 @@ export const Experience = ({loading}) => {
           </div>
           <div>
             <CustomP>
-            I'm Arjun. Results-driven Associate Software Engineer with 2+ years of hands-on experience in React development. Proven collaborator with cross-functional teams, adept at delivering high-quality software solutions in fast-paced environments. Passionate about innovation, with a focus on enhancing user experiences. Eager to leverage technical expertise for challenging projects at Techversant Infotech.
+              I'm Arjun. Results-driven Associate Software Engineer with 2+ years of hands-on experience in React development. Proven collaborator with cross-functional teams, adept at delivering high-quality software solutions in fast-paced environments. Passionate about innovation, with a focus on enhancing user experiences. Eager to leverage technical expertise for challenging projects at Techversant Infotech.
             </CustomP>
           </div>
         </CardDiv>

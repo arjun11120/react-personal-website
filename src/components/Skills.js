@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,6 +6,8 @@ import Card from "react-bootstrap/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCss3, faGit, faHtml5, faJs, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import Skeleton from '@mui/material/Skeleton';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const RowWrapper = styled(Row)`
   margin: 20px 0px;
@@ -52,10 +54,16 @@ const CardTitle = styled(Card.Title)`
 `;
 
 export const Skills = ({ref, loading}) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <>
       {!loading ? (
-      <RowWrapper ref={ref}>
+      <RowWrapper id="section2" ref={ref} data-aos="fade-up">
         <Row>
           <RowWrapperHeader>My Skills</RowWrapperHeader>
         </Row>
@@ -67,7 +75,7 @@ export const Skills = ({ref, loading}) => {
             </StyledCard>
           </Col>
           <Col xs={6} sm={4} lg={2} className="d-flex justify-content-center"> 
-            <StyledCard>
+            <StyledCard className="bg-black text-white">
               <FontAwesomeIcon icon={faJs} size="2x" />
                 <CardTitle>JavaScript</CardTitle>
             </StyledCard>

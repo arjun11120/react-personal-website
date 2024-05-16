@@ -1,8 +1,11 @@
-import React, {useRef} from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Skeleton from '@mui/material/Skeleton';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import aboutImage from '../assets/images/aboutImage.png';
 
 const RowWrapperHeader = styled.div`
@@ -28,14 +31,19 @@ const PCustomTag = styled.p`
 `;
 
 export const AboutBody = ({ loading }) => {
-  const homeRef = useRef(null);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   return (
     <>
       {loading ? (
         <Skeleton className="mt-2" variant="rectangular" height={500} />
       ) : (
         <>
-          <Row className="p-md-5 p-4">
+          <Row id="section3" className="p-md-5 p-4" data-aos="fade-up">
             <Col xs={12} sm={6}>
               <img src={aboutImage} alt="profile image" className="img-fluid" />
             </Col>
