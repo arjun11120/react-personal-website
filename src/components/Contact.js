@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,7 +9,6 @@ import Skeleton from '@mui/material/Skeleton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const RowWrapper = styled(Row)`
   margin: 20px 0px;
@@ -94,20 +93,6 @@ const NavLinks = styled.div`
     }
   }
 `;
-const StyledTextarea = styled(TextareaAutosize)`
-  width: 100%;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  padding: 12px;
-  border-radius: 4px;
-  color: black;
-  background: white;
-  border: 1px solid black;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  resize: both;
-`;
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -133,19 +118,6 @@ const NameSpan2 = styled.span`
   font-family: 'Sora-Bold', sans-serif;
   @media (max-width: 767px) {
     font-size: 16px;
-  }
-`;
-const NameWish = styled.span`
-  font-size: 48px;
-  font-family: 'Sora-Light', sans-serif;
-  @media (max-width: 767px) {
-    font-size: 22px;
-  }
-`;
-const h1Custom = styled.h1`
-  line-height: 15px;
-  @media (max-width: 767px) {
-    line-height: 8px;
   }
 `;
 const DiscriptionPtag = styled.p`
@@ -243,8 +215,7 @@ export const Contact = ({ loading }) => {
                 </DiscriptionPtag>
                 <h1Custom data-aos="fade-up" className="mt-4">
                   <NameSpan2>arjunarjun2159@gmail.com
-                  </NameSpan2>
-                    <p></p>
+                  </NameSpan2><br></br>
                   <NameSpan2>7593911819</NameSpan2>
                 </h1Custom>  
               </ContentContainer>
