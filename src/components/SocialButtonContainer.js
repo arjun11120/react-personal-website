@@ -55,6 +55,12 @@ export const SocialButtonContainer = () => {
   return (
     <>
       <MainContainer data-aos="fade-up">
+        <NavItem href="/Facebook">
+          <NavLinks className="transition-all text-white bg-black">
+            <FontAwesomeIcon icon={faFacebook} />
+          </NavLinks>
+          <NavLinkText>Facebook</NavLinkText>
+        </NavItem>
         <NavItem href="/LinkedIn">
           <NavLinks className="transition-all">
             <FontAwesomeIcon icon={faLinkedinIn} />
@@ -66,12 +72,6 @@ export const SocialButtonContainer = () => {
             <FontAwesomeIcon icon={faInstagram} />
           </NavLinks>
           <NavLinkText>Instagram</NavLinkText>
-        </NavItem>
-        <NavItem href="/Facebook">
-          <NavLinks className="transition-all">
-            <FontAwesomeIcon icon={faFacebook} />
-          </NavLinks>
-          <NavLinkText>Facebook</NavLinkText>
         </NavItem>
         <NavItem href="/Whatsapp">
           <NavLinks className="transition-all">

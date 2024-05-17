@@ -6,8 +6,6 @@ import Skeleton from '@mui/material/Skeleton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import bodyImage from '../assets/images/Techversant-logo.png';
-
 const RowWrapper = styled(Row)`
   margin-top: 100px;
   padding: 40px 0px 100px;
@@ -47,15 +45,6 @@ const CustomP = styled.p`
     text-align: center;
   }
 `;
-const BodyImage = styled.img`
-  max-width: 100%;
-  margin-right: 30px;
-  height: auto;
-  @media (max-width: 767px) {
-    max-width: 100%;
-    margin: 20px 0px;
-  }
-`;
 
 export const Experience = ({loading}) => {
   useEffect(() => {
@@ -72,10 +61,8 @@ export const Experience = ({loading}) => {
       <Col>
         <CardDiv className = "m-4 p-4">
           <div className="d-block d-md-flex justify-content-between align-items-center">
-            <CustomH6>
-              <BodyImage src={bodyImage} alt="profile image" className="img-fluid" />
-              Techversant Infotech.</CustomH6>
-            <CustomH4>Nov 2019 - Present</CustomH4>
+            <CustomH6>Techversant Infotech.</CustomH6>
+            <CustomH4>Jun 2022 - Present</CustomH4>
           </div>
           <div>
             <CustomP>

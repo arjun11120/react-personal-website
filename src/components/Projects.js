@@ -118,7 +118,7 @@ export const Projects = ({ loading }) => {
                   <CardTitle>01</CardTitle>
                   <CardSubtitle>Portfolio using react</CardSubtitle>
                   <CardText>
-                    Developed a dynamic shopping cart app using React.js, allowing users to browse products and seamlessly add items to their cart. Utilized state management to track cart items, enhancing user experience by providing real-time updates. Implemented responsive design principles for optimal performance across various devices.
+                    Designed and developed a personal website using React.js, showcasing my portfolio, projects, and personal information. Leveraged React's component-based architecture to create a modular and scalable website structure. Employed modern design principles and responsive web design techniques to ensure optimal user experience across devices. Integrated interactive elements and animations to engage visitors and highlight key information effectively.
                   </CardText>
                   <Card.Link href="https://github.com/arjun11120/react-personal-website">
                     <FontAwesomeIcon className="text-white" icon={faShareFromSquare} />
@@ -134,7 +134,7 @@ export const Projects = ({ loading }) => {
                   <CardTitle>02</CardTitle>
                   <CardSubtitle>React Shopping Cart Application</CardSubtitle>
                   <CardText>
-                    Designed and developed a personal website using React.js, showcasing my portfolio, projects, and personal information. Leveraged React's component-based architecture to create a modular and scalable website structure. Employed modern design principles and responsive web design techniques to ensure optimal user experience across devices. Integrated interactive elements and animations to engage visitors and highlight key information effectively.
+                    Developed a dynamic shopping cart app using React.js, allowing users to browse products and seamlessly add items to their cart. Utilized state management to track cart items, enhancing user experience by providing real-time updates. Implemented responsive design principles for optimal performance across various devices.
                   </CardText>
                   <Card.Link href="https://github.com/arjun11120/react-cart">
                     <FontAwesomeIcon className="text-white" icon={faShareFromSquare} />

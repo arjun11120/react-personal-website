@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -118,7 +118,7 @@ const App = () => {
   const HeaderMain = () => {
     const [activeSection, setActiveSection] = useState("section1");
     return !loading ? (
-      <Navbar expand="lg" className="bg-body-tertiary px-md-4">
+      <Navbar expand="lg" className="bg-body-tertiary px-2">
         <Navbar.Brand href="/" className="d-flex">
           <BrandContainer>
             <LogoImage src={logoImage} alt="Example" />
@@ -182,8 +182,7 @@ const App = () => {
   };  
 
   return (
-    <Container className="m-0" fluid>
-      <Container fluid style={{ maxWidth: '2000px' }} className="p-0">
+      <Container fluid style={{ maxWidth: '2000px' }}>
         <HeaderMain loading={loading}  />
         <GlobalStyle />
         <BodyMain loading={loading} />
@@ -194,7 +193,6 @@ const App = () => {
         <Contact />
         <Footer/>
       </Container>
-    </Container>
   );
 };
 export default App;
