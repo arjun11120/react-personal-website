@@ -167,7 +167,7 @@ const App = () => {
           </StyledH4>
           </div>
           <Form className="d-flex">
-            <Button className="bg-black border-0">
+            <Button className="bg-black border-0" href="/src/assets/documents/Arjun_Krishnakumar_Resume.pdf" download>
               <StyledButton className="bg-black border-0">
                 <StyledFontAwesomeIcon icon={faDownload} />
                 Resume
